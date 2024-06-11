@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('tasks');
-});
+Route::get('/', [App\Http\Controllers\TasksController::class, 'index'])->name('tasks.list'); // list
+Route::post('/', [App\Http\Controllers\TasksController::class, 'store'])->name('task.create'); // create
+Route::patch('/{id}', [App\Http\Controllers\TasksController::class, 'update'])->name('task.update'); // update (mark as complete)
+Route::delete('/{id}', [App\Http\Controllers\TasksController::class, 'destroy'])->name('task.delete'); // delete
